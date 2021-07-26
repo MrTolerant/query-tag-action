@@ -64,7 +64,7 @@ try {
            const tagLength =  splitedTag.length
            splitedTag[tagLength - 1] += 1
            const incrementedTag = splitedTag.join('.')
-           colsole.log('incrementedTag:',incrementedTag)
+           console.log('incrementedTag:',incrementedTag)
            console.log(`Outputting tag: ${incrementedTag}`)
            return setOutput('tag', incrementedTag);
         }
