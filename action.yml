@@ -2,6 +2,11 @@ name: 'Query Tag'
 description: 'Queries for a git tag using git describe'
 author: 'Jim Schubert'
 inputs:
+inputs:
+  increment:
+    description: 'Increment minor version before output'
+    required: true
+    default: 'true'
   include:
     description: 'Glob pattern of tags to include'
     required: false
