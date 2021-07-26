@@ -18,6 +18,7 @@ try {
     const include = getInput('include');
     const exclude = getInput('exclude');
     const commitIsh = getInput('commit-ish');
+    const increment = getInput('increment') === 'true';
     const skipUnshallow = getInput('skip-unshallow') === 'true';
     const abbrev = getInput("abbrev");
 
@@ -55,6 +56,14 @@ try {
         if (err) {
             console.error(`Unable to find an earlier tag.\n${stderr}`);
             return process.exit(1);
+        }
+        if (increment) {
+           const splitedTag  = tag.split('.')
+           const tagLength =  splitedTag.length
+           splitedTag[tagLength - 1] += 1
+           const incrementedTag = splitedTag.join('.')
+           console.log(`Outputting tag: ${incrementedTag}`)
+           return setOutput('tag', incrementedTag);
         }
         console.log(`Outputting tag: ${tag.trim()}`)
         return setOutput('tag', tag.trim());
