@@ -19,6 +19,7 @@ try {
     const exclude = getInput('exclude');
     const commitIsh = getInput('commit-ish');
     const increment = getInput('increment') === 'true';
+    console.log('increment: ', increment)
     const skipUnshallow = getInput('skip-unshallow') === 'true';
     const abbrev = getInput("abbrev");
 
@@ -58,10 +59,12 @@ try {
             return process.exit(1);
         }
         if (increment) {
+           console.log('Increment version started...')
            const splitedTag  = tag.split('.')
            const tagLength =  splitedTag.length
            splitedTag[tagLength - 1] += 1
            const incrementedTag = splitedTag.join('.')
+           colsole.log('incrementedTag:',incrementedTag)
            console.log(`Outputting tag: ${incrementedTag}`)
            return setOutput('tag', incrementedTag);
         }
