@@ -5,7 +5,7 @@ inputs:
   increment:
     description: 'Increment minor version before output'
     required: false
-    default: 'true'
+    default: 'false'
   include:
     description: 'Glob pattern of tags to include'
     required: false
